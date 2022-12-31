@@ -13,5 +13,18 @@ pipeline{
 			}
 		}
 		
+		stage('Sonar Analysis') {
+			enviroment{
+				scannerHome = toll 'SONAR_SCANNER'
+			}
+			steps{
+				withSonarQubeEnv{
+					sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployBack -Dsonar.host.url=http://localhost:9000 -Dsonar.login=7e587daa107456fbd9ef08f4b1d9d5ebf3e3012c -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/mvn/**, **/src//test/**, **/model/**, **Application.java, **/controller/TaskControllerTest.java"
+				}
+			}
+		}
+		
+		
 	}
 }
+
