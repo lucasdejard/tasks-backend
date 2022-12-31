@@ -67,6 +67,8 @@ pipeline{
 		
 		stage('Deploy Prod') {
 			steps{
+				git credentialsId: 'd6c4298f-2e44-401f-9adc-04a701614fa6', url: 'https://github.com/lucasdejard/tasks-backend/blob/master/Dockerfile'
+				git credentialsId: 'd6c4298f-2e44-401f-9adc-04a701614fa6', url: 'https://github.com/lucasdejard/tasks-backend/blob/master/docker-compose.yml'
 				sh 'docker build .'
 				sh 'docker-compose up -d'
 				}
