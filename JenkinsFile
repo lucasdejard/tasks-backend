@@ -55,6 +55,15 @@ pipeline{
 				}
 			}
 		}
-		
+	
+		stage('Functional tests') {
+			steps{
+				dir('functional test'){
+				git credentialsId: 'd6c4298f-2e44-401f-9adc-04a701614fa6', url: 'https://github.com/lucasdejard/tasks-functional-tests'
+				sh 'mvn test'
+				}
+			}
+		}
+	
 	}
 }
