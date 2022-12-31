@@ -69,7 +69,7 @@ pipeline{
 			steps{
 				git credentialsId: 'd6c4298f-2e44-401f-9adc-04a701614fa6', url: 'https://github.com/lucasdejard/tasks-backend'
 				
-				sh 'docker build .'
+				sh 'docker build Dockerfile'
 				sh 'docker-compose up -d'
 				}
 			}
